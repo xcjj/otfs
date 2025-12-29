@@ -11,8 +11,16 @@ function [txWaveform] = gen_transmitsignal(sysPar,carrier,data,RFI,BeamSweep);
 nTr = sysPar.nTr;
 txWaveform = [];
 for iTr = 1 : nTr
-    txWaveform_t = nr.OFDMModulate( carrier, data.txGrid(:,:,:,iTr ),...
-        sysPar.center_frequency, 0 );
+    switch upper(sysPar.Modulation)
+        case 'OFDM'
+            txWaveform_t = nr.OFDMModulate( carrier, data.txGrid(:,:,:,iTr ),...
+                sysPar.center_frequency, 0 );
+        case 'OTFS'
+            txWaveform_t = nr.OTFSModulate( carrier, data.txGrid(:,:,:,iTr ),...
+                sysPar.center_frequency, 0 );
+        otherwise
+            error('Unsupported modulation type: %s', sysPar.Modulation);
+    end
     txWaveform_t = cat(1, txWaveform_t, zeros(500, size(txWaveform_t, 2) ) );
     % add txbeamforming
     txWaveform_t = tx_beamforming(BeamSweep, txWaveform_t, RFI);

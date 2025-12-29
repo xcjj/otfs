@@ -11,6 +11,7 @@ sysPar.nBS = 2;
 sysPar.nUE = 1;
 sysPar.RSPeriod = 4;  % n slot
 sysPar.SignalType = 'SRS';       %'SRS', 'CSIRS'
+sysPar.Modulation = 'OFDM';      %'OFDM', 'OTFS'
 sysPar.BeamSweep = 0;
 sysPar.SNR = 20; % in dB 
 sysPar.bandwidth = 1e8;
@@ -53,4 +54,3 @@ PE.SCS = carrier.SubcarrierSpacing;
 PE.AngEstiMethodSel = 'music2';
 PE.RngEstiMethodSel = 'toa_music';
 end
-
