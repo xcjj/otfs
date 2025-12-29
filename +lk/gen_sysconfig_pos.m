@@ -5,8 +5,8 @@ sysPar.nFrames = 0.05;
 sysPar.center_frequency = 3.5e9;
 sysPar.UEstate = 'dynamic';% static or dynamic
 sysPar.VelocityUE = 300/3.6;% m/s
-sysPar.BSArraySize = [16 8];
-sysPar.UEArraySize = [2 2];
+sysPar.BSArraySize = [128 1];
+sysPar.UEArraySize = [4 1];
 sysPar.nBS = 1;
 sysPar.nUE = 1;
 sysPar.RSPeriod = 4;  % n slot
@@ -51,6 +51,6 @@ RFI.Ind_SNR = 0; % 0 for base noise; 1 sig power by path loss; 2 measured; 3 no 
 %% === Estimation Config.===========%
 PE = ParaEstimation;
 PE.SCS = carrier.SubcarrierSpacing;
-PE.AngEstiMethodSel = 'music2';
+PE.AngEstiMethodSel = 'music1';
 PE.RngEstiMethodSel = 'toa_music';
 end
