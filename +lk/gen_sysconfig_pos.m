@@ -2,12 +2,12 @@ function [sysPar,carrier,BeamSweep,Layout,RFI,PE,Chan] = gen_sysconfig_pos(~);
 %gen_sysconfig_pos System paramenters Config. for AOA positioning
 %% ====Basic Parameters Config.====%
 sysPar.nFrames = 0.05;
-sysPar.center_frequency = 4.9e9;
-sysPar.UEstate = 'static';% static or dynamic
-sysPar.VelocityUE = 3/3.6;% m/s
-sysPar.BSArraySize = [4 4];
-sysPar.UEArraySize = [1 1];
-sysPar.nBS = 2;
+sysPar.center_frequency = 3.5e9;
+sysPar.UEstate = 'dynamic';% static or dynamic
+sysPar.VelocityUE = 300/3.6;% m/s
+sysPar.BSArraySize = [16 8];
+sysPar.UEArraySize = [2 2];
+sysPar.nBS = 1;
 sysPar.nUE = 1;
 sysPar.RSPeriod = 4;  % n slot
 sysPar.SignalType = 'SRS';       %'SRS', 'CSIRS'
@@ -27,7 +27,7 @@ sysPar.UEPos(:,1) = [ -20 ; 10; sysPar.h_UE];
 
 sysPar.UEorientation = 0  * rand(1, sysPar.nUE); 
 % sysPar.Scenario = '3GPP_38.901_Indoor_LOS';
-sysPar.Scenario = {'umi'};
+sysPar.Scenario = {'rma'};
 % '3GPP_38.901_InF_DH''LOSonly','3GPP_38.901_Indoor_LOS'
 sysPar.powerUE = 23; % dBm 200 mW   
 sysPar.powerBS = 24; % dBm 250 mW

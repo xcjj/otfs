@@ -4,6 +4,7 @@ function [rxGrid, rxDDGrid] = gen_demodulatedgrid(sysPar,carrier,rxWaveform);
 % Description:
 % This function aims to perform demodulation at the receiver.
 % Note: rxGrid: % nSC * nSyms * nRx * nRr
+%       rxDDGrid: % nSC * nSyms * nRx * nRr (OTFS only)
 %
 % Developer: Jia. Institution: PML. Date: 2021/10/28
 
