@@ -26,6 +26,7 @@ for iRr = 1 : nRr
             hf = fft(cir_slot, nfft, 1);
             hf = circshift(hf, nSC / 2, 1);
             hf = hf(1:nSC, :, :);
+            hf = permute(hf, [1 3 2]);
             cfr_true(:, :, :, islot, iRr, iTr) = hf;
         end
     end
