@@ -1,0 +1,26 @@
+% https://ww2.mathworks.cn/help/5g/ref/nrpolarencode.html
+clc
+clear
+
+K = 132;
+E = 256;
+msg = randi([0 1],K,1,'int8');
+enc = nrPolarEncode(msg,E);
+
+nVar = 1.5; 
+chan = comm.AWGNChannel('NoiseMethod','Variance','Variance',nVar);
+
+bpskMod = comm.BPSKModulator;
+bpskDemod = comm.BPSKDemodulator('DecisionMethod', ...
+    'Approximate log-likelihood ratio','Variance',nVar);
+
+
+mod = bpskMod(enc);
+rSig = chan(mod);
+rxLLR = bpskDemod(rSig); 
+
+L = 8;
+rxBits = nrPolarDecode(rxLLR,K,E,L);
+
+numBitErrs = biterr(rxBits,msg);
+disp(['Number of bit errors: ' num2str(numBitErrs)])
