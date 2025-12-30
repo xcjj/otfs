@@ -15,6 +15,10 @@ sysPar.Modulation = 'OFDM';      %'OFDM', 'OTFS'
 sysPar.BeamSweep = 0;
 sysPar.SNR = 20; % in dB 
 sysPar.bandwidth = 1e8;
+sysPar.otfsPilot = struct();
+sysPar.otfsPilot.form = 'OTFS_delta';
+sysPar.otfsPilot.qamMode = 4;
+sysPar.otfsPilot.embeddedPilotAmp = [];
 %% ====System layout Config.========%
 sysPar.h_BS = 3;
 sysPar.h_UE = 1.5;
